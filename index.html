@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catatan Transaksi — Ledjer Rucoy</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Catatan Transaksi</h1>
+        <p>Urutkan nomor, tanggal, jenis item, aksi (BUY/SELL), jumlah, total, dan catatan — tampilan modern & ringan</p>
+      </div>
+      <div>
+        <input type="file" id="importTxInput" accept=".csv" style="display:none" />
+        <a class="btn-inventory" href="inventory.html" aria-label="Inventory" style="margin-right:8px"><span class="icon">📦</span><span class="label">Inventory</span></a>
+        <button class="ghost" id="importTxBtn">📥 Import CSV</button>
+        <button class="ghost" id="exportBtn">📤 Export CSV</button>
+      </div>
+    </header>
+
+    <!-- Toast notifications -->
+    <div id="toast" class="toast" aria-live="polite" hidden></div>
+
+    <div class="grid">
+      <aside class="panel">
+        <h3 style="margin-top:0">Tambah Transaksi</h3>
+        <form id="entryForm">
+          <div class="row">
+            <div class="col">uyyyy
+              <label for="date">Tanggal</label>
+              <input id="date" type="date" required />
+            </div>
+            <div class="col">
+              <label for="action">Aksi</label>
+              <select id="action">
+                <option value="BUY">BUY (Outflow)</option>
+                <option value="SELL">SELL (Inflow)</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="item">Jenis Item</label>
+          <input id="item" type="search" placeholder="Cari item..." autocomplete="off" required aria-haspopup="listbox" aria-expanded="false" aria-controls="suggestions" />
+          <ul id="suggestions" class="suggestions" role="listbox" aria-label="Hasil pencarian" hidden></ul> 
+
+          <label for="tier">Tier</label>
+          <select id="tier">
+            <option value="common">Common</option>
+            <option value="uncommon">Uncommon</option>
+            <option value="rare">Rare</option>
+            <option value="ultra">Ultra Rare</option>
+            <option value="legendary">Legendary</option>
+            <option value="mythic">Mythic</option>
+          </select>
+
+          <div class="row">
+            <div class="col">
+              <label for="qty">Quantity / Jumlah</label>
+              <input id="qty" type="number" min="0" step="1" value="1" required />
+            </div>
+            <div class="col">
+              <label for="total">Total / Equity</label>
+              <input id="total" type="number" min="0" step="0.01" value="0" required />
+            </div>
+          </div>
+
+          <label for="notes">Catatan</label>
+          <textarea id="notes" placeholder="Tambahkan keterangan singkat (opsional)"></textarea>
+
+          <div class="actions">
+            <button type="submit" id="submitBtn">Tambah</button>
+            <button type="button" class="ghost" id="cancelEditBtn" style="display:none">Batal</button>
+            <button type="button" class="ghost" id="clearBtn">Bersihkan</button>
+          </div>
+        </form>
+      </aside>
+
+      <section class="panel">
+        <div class="controls">
+          <div class="filters">
+            <button class="btn-filter active" data-filter="ALL">Semua</button>
+            <button class="btn-filter" data-filter="BUY">BUY</button>
+            <button class="btn-filter" data-filter="SELL">SELL</button>
+          </div>
+          <div class="muted" id="summary">Total: 0 • Equity: 0</div>
+        </div>
+
+        <div style="overflow:auto;border-radius:8px">
+          <table aria-label="Daftar transaksi">
+            <thead>
+              <tr>
+                <th style="width:40px">#</th>
+                <th>Tanggal</th>
+                <th>Jenis Item</th>
+                <th>TIER</th>
+                <th>Aksi</th>
+                <th class="right">Jumlah</th>
+                <th class="right">Total</th>
+                <th class="right">Equity</th>
+                <th>Catatan</th>
+                <th style="width:110px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="listBody">
+              <tr class="empty-row"><td colspan="10" class="empty">Belum ada transaksi. Tambahkan transaksi baru di sebelah kiri.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/papaparse@5.3.2/papaparse.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

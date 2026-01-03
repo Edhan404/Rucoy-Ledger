@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inventory — Ledjer Rucoy</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Inventory</h1>
+        <p>Daftar item yang masih dimiliki (sudah dibeli tapi belum terjual)</p>
+      </div>
+      <div>
+        <a class="btn-back" href="index.html" aria-label="Kembali"><span class="icon">⬅️</span><span class="label">Kembali</span></a>
+        <button class="ghost" id="exportInvBtn">📤 Export CSV</button>
+      </div>
+    </header>
+
+    <div class="panel">
+      <div class="inventory-controls">
+        <input id="invSearch" class="inv-search" type="search" placeholder="Cari item..." aria-label="Cari item" />
+        <div class="muted" id="invSummary">Items: 0 • Total Value: 0 Gold Coins</div>
+      </div>
+
+      <div style="overflow:auto;border-radius:8px">
+        <table class="inventory-table" aria-label="Inventory items">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Tier</th>
+              <th class="right">Qty</th>
+              <th class="right">Total Value</th>
+              <th class="right">Avg Price</th>
+            </tr>
+          </thead>
+          <tbody id="invBody">
+            <tr class="empty-row"><td colspan="5" class="inventory-empty">Inventory kosong.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/inventory.js"></script>
+</body>
+</html>
