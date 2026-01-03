@@ -480,3 +480,12 @@ importTxInput.addEventListener('change', async (ev)=>{
 // load DB and initial render
 loadItemsCSV().then(()=>{ console.log('itemsDB loaded', itemsDB.length); });
 render();
+
+// Register Service Worker for PWA (if available)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('ServiceWorker registered:', reg.scope))
+      .catch(err => console.warn('ServiceWorker registration failed:', err));
+  });
+}
