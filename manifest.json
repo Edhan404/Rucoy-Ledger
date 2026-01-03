@@ -1,6 +1,6 @@
 {
-  "name": "Ledjer Rucoy",
-  "short_name": "Ledjer",
+  "name": "Ledger Rucoy",
+  "short_name": "Ledger",
   "description": "Catatan transaksi dan inventory untuk Ledjer Rucoy",
   "start_url": "./index.html",
   "scope": "./",
@@ -12,4 +12,5 @@
     { "src": "icons/icon-192.svg", "sizes": "192x192", "type": "image/svg+xml" },
     { "src": "icons/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml" }
   ]
+
 }
