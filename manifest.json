@@ -1,7 +1,7 @@
 {
   "name": "Ledger Rucoy",
   "short_name": "Ledger",
-  "description": "Catatan transaksi dan inventory untuk Ledjer Rucoy",
+  "description": "Catatan transaksi dan inventory untuk Ledger Rucoy",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -14,3 +14,4 @@
   ]
 
 }
+
